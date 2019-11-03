@@ -1,7 +1,7 @@
 package com.br.photosearch;
 
 import com.br.photosearch.domain.dagger.DaggerAppComponent;
-import com.br.photosearch.domain.dagger.auth.RetrofitModule;
+import com.br.photosearch.domain.dagger.remoterequests.RetrofitModule;
 import com.br.photosearch.domain.dagger.repository.RepositoryModule;
 import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
