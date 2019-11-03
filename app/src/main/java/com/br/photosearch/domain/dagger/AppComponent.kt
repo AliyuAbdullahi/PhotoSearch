@@ -2,7 +2,7 @@ package com.br.photosearch.domain.dagger
 
 import com.br.photosearch.App
 import com.br.photosearch.domain.dagger.activities.ActivitiesModule
-import com.br.photosearch.domain.dagger.auth.RetrofitModule
+import com.br.photosearch.domain.dagger.remoterequests.RetrofitModule
 import com.br.photosearch.domain.dagger.repository.RepositoryModule
 import com.br.photosearch.domain.dagger.viewmodels.ViewModelModule
 import dagger.BindsInstance

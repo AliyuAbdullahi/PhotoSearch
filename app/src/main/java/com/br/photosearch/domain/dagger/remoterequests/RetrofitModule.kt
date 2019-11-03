@@ -1,4 +1,4 @@
-package com.br.photosearch.domain.dagger.auth
+package com.br.photosearch.domain.dagger.remoterequests
 
 import android.app.Application
 import com.br.photosearch.BuildConfig
@@ -23,9 +23,8 @@ class RetrofitModule(private val application: Application) {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         val okHttpClientBuilder = OkHttpClient.Builder()
-        val photosInterceptor = PhotosQueryInterceptor(application)
         okHttpClientBuilder.addInterceptor(interceptor)
-        okHttpClientBuilder.addInterceptor(photosInterceptor)
+        okHttpClientBuilder.addInterceptor(ConnectivityInterceptor(application))
         okHttpClientBuilder.connectTimeout(10, TimeUnit.SECONDS)
         okHttpClientBuilder.readTimeout(10, TimeUnit.SECONDS)
         okHttpClientBuilder.writeTimeout(10, TimeUnit.SECONDS)
@@ -42,5 +41,4 @@ class RetrofitModule(private val application: Application) {
     fun providePhotoService(retrofit: Retrofit): PhotosService {
         return retrofit.create(PhotosService::class.java)
     }
-
 }
