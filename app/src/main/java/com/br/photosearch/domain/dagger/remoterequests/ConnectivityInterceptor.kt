@@ -8,7 +8,6 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import android.os.Build
 
-
 class ConnectivityInterceptor(private val app: Application) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
 

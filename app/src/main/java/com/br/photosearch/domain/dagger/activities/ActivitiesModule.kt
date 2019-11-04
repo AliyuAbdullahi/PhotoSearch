@@ -1,5 +1,6 @@
 package com.br.photosearch.domain.dagger.activities
 
+import com.br.photosearch.presentation.photodetail.PhotoDetailsActivity
 import com.br.photosearch.presentation.photos.PhotosActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -9,4 +10,7 @@ abstract class ActivitiesModule {
 
     @ContributesAndroidInjector
     abstract fun contributeLoginActivity(): PhotosActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributePhotoDetailsActivity(): PhotoDetailsActivity
 }

@@ -3,4 +3,11 @@
 
     <string name="flickr_key" templateMergeStrategy="preserve" translatable="false">@string/FLICKR_API_KEY</string>
     <string name="default_error_message">An error occurred</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="thumbnail">Thumbnail</string>
+    <string name="selected_image">Selected Image</string>
+    <string name="photo">photo</string>
+    <string name="photo_title">PhotoTitle</string>
 </resources>

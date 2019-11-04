@@ -14,12 +14,12 @@ class PhotosViewModel @Inject constructor(val repository: Repository) :
     BaseViewModelManager.ViewModelState<PhotosViewModel.PhotoViewModelState, ViewEvent>() {
     override val initialState = PhotoViewModelState()
 
-    fun findPhotos(filter: String, apiKey: String, perPage: String, defaultErrorMessage: String) {
+    fun findPhotos(filter: String, apiKey: String, defaultErrorMessage: String) {
 
         disposable += repository.getPhotosList(
             filter,
             apiKey,
-            perPage,
+            perPage = "25",
             method = "flickr.photos.search",
             format = "json",
             noJsonCallback = "1"
@@ -44,8 +44,10 @@ class PhotosViewModel @Inject constructor(val repository: Repository) :
         if (it.code() == 200) {
             val result = it.body()
             result?.let {
-                updateState {
-                    updatePhotos(it.photos.allPhotos)
+                it.photos?.allPhotos?.let {
+                    updateState {
+                        updatePhotos(it)
+                    }
                 }
             }
         } else {
