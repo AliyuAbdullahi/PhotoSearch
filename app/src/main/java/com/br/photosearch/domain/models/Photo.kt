@@ -1,8 +1,11 @@
 package com.br.photosearch.domain.models
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Photo(
     @SerializedName("farm")
     val farm: Int,
@@ -22,8 +25,15 @@ data class Photo(
     val server: String,
     @SerializedName("title")
     val title: String
-)  {
-    private val photoUrl = "https://farm$farm.staticflickr.com/$server/${id}_$secret"
-    fun large() = "$photoUrl.jpg"
-    fun thumbnail() = photoUrl + "_s.jpg"
+) : Parcelable
+
+fun Photo.thumbnail(): String {
+    return buildUrl(this) + "_m.jpg"
+}
+
+private fun buildUrl(photo: Photo) =
+    "https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}"
+
+fun Photo.large(): String {
+    return buildUrl(this) + ".jpg"
 }
